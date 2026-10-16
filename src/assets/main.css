@@ -1,0 +1,84 @@
+/* ================= 全局重置与主题变量 ================= */
+* { box-sizing: border-box; }
+
+/* 浅色主题页面背景 */
+:root {
+  --bg-gradient: linear-gradient(135deg, #e0f2fe 0%, #ecfdf5 30%, #d1fae5 55%, #f0fdf4 75%, #ecfeff 100%);
+  --text-main: #1f2937;
+}
+
+/* 深色主题（与 Element Plus 暗色模式共用 html.dark 类名） */
+html.dark {
+  --bg-gradient: linear-gradient(135deg, #0b1220 0%, #0f172a 30%, #1e293b 55%, #0f172a 75%, #0b1220 100%);
+  --text-main: #e2e8f0;
+}
+
+body {
+  margin: 0;
+  padding: 32px 16px 60px;
+  min-height: 100vh;
+  font-family: "PingFang SC", "Microsoft YaHei", system-ui, -apple-system, sans-serif;
+  color: var(--text-main);
+  background: var(--bg-gradient);
+  background-attachment: fixed;
+  transition: color .3s ease;
+}
+
+/* 暗色模式下使用 Element Plus 的文字色，保证对比度 */
+html.dark body {
+  color: var(--el-text-color-primary);
+}
+
+/* ================= 页面整体布局 ================= */
+/* 内容区居中并限制最大宽度 */
+.app-shell {
+  max-width: 880px;
+  margin: 0 auto;
+}
+/* header / main / footer 的内边距交给内部卡片处理 */
+.app-shell__header,
+.app-shell__main,
+.app-shell__footer {
+  padding-left: 0;
+  padding-right: 0;
+}
+/* 页面内多张卡片之间的垂直间距 */
+.app-shell__main > * + * {
+  margin-top: 20px;
+}
+
+/* ================= 卡片通用排版 ================= */
+/* 卡片头部：标题在左，操作在右 */
+.card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.card-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--el-text-color-primary);
+}
+/* 布局型卡片统一边框 */
+.layout-card {
+  border: 1px solid var(--el-border-color-lighter);
+}
+
+/* 详情页头部：标题与元信息左右分布 */
+.detail-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+/* 页脚段落间距 */
+.app-footer p {
+  margin: 4px 0;
+}
